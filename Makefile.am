@@ -23,7 +23,8 @@ endif
 bin_SCRIPTS = scripts/bumblebee-bugreport
 
 xconfddir = $(bumblebeedconfdir)/xorg.conf.d
-xconfd_DATA = conf/xorg.conf.d/10-dummy.conf
+xconfd_DATA = conf/xorg.conf.d/10-dummy.conf \
+	conf/xorg.conf.d/10-ignore-devices.conf
 
 CLEANFILES = $(noinst_SCRIPTS) conf/bumblebee.conf $(bin_SCRIPTS)
 EXTRA_DIST = scripts/systemd/bumblebeed.service.in \
