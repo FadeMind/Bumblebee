@@ -61,7 +61,7 @@ int module_is_loaded(char *driver) {
  *
  * @param module_name The filename of the module to be loaded
  * @param driver The name of the driver to be loaded
- * @return 1 if the driver is succesfully loaded, 0 otherwise
+ * @return 1 if the driver is successfully loaded, 0 otherwise
  */
 int module_load(char *module_name, char *driver) {
   int err = 0;
@@ -113,7 +113,7 @@ int module_load(char *module_name, char *driver) {
  * Unloads module and modules that are depending on this module.
  *
  * @param mod Reference to libkmod module
- * @return 1 if the module is succesfully unloaded, 0 otherwise
+ * @return 1 if the module is successfully unloaded, 0 otherwise
  */
 int module_unload_recursive(struct kmod_module *mod) {
   int err = 0, flags = 0, refcnt;
@@ -152,7 +152,7 @@ int module_unload_recursive(struct kmod_module *mod) {
  * Attempts to unload a module if loaded.
  *
  * @param driver The name of the driver (not a filename)
- * @return 1 if the driver is succesfully unloaded, 0 otherwise
+ * @return 1 if the driver is successfully unloaded, 0 otherwise
  */
 int module_unload(char *driver) {
   int err;
