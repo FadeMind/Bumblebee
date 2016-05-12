@@ -1,3 +1,6 @@
+| **This is fork bumblebee with merged all major changes from `develop` branch based on fork with new way handling nvidia modules unloading via `libkmod2`.** |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
 Bumblebee Daemon
 =================
 
@@ -121,4 +124,4 @@ Interesting Links
 - Arch Linux Wiki: https://wiki.archlinux.org/index.php/Bumblebee
 - Mandriva Wiki: http://wiki.mandriva.com/en/Bumblebee
 - Debian Wiki: http://wiki.debian.org/Bumblebee
-- Fedora wiki: https://fedoraproject.org/wiki/Bumblebee
+- Fedora Wiki: https://fedoraproject.org/wiki/Bumblebee
