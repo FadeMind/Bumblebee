@@ -144,11 +144,11 @@ static void parse_xorg_output(char * string){
   /* Error lines are errors. */
   if (strncmp(string, "(EE)", 4) == 0){
     if (strstr(string, "Failed to load module \"kbd\"") ||
-            strstr(string, "Failed to load module \"mouse\"") ||
-            strstr(string, "failed to set DRM interface version 1.4:") ||
-            strstr(string, "No input driver matching") ||
-            strstr(string, "systemd-logind: failed to get session:") ||
-            strstr(string, "Server terminated successfully")) {
+        strstr(string, "Failed to load module \"mouse\"") ||
+        strstr(string, "No input driver matching") ||
+        strstr(string, "systemd-logind: failed to get session:") ||
+        strstr(string, "failed to set DRM interface version 1.4:") ||
+        strstr(string, "Server terminated successfully")) {
       /* non-fatal errors */
       prio = LOG_DEBUG;
     } else {
@@ -165,20 +165,20 @@ static void parse_xorg_output(char * string){
     prio = LOG_WARNING;
     /* recognize some of the less useful warnings, degrade them to LOG_DEBUG level. */
     if (
-            /* nouveau: warning about no outputs being found connected */
-            strstr(string, "trying again") ||
-            /* nouveau: warning for set resolution with no screen attached */
-            strstr(string, "initial framebuffer") ||
-            /* X: no keyboard/mouse warning */
-            strstr(string, "looking for one") ||
-            /* nvidia: cannot read EDID warning */
-            strstr(string, "EDID") ||
-            /* fonts directory that cannot be found */
-            strstr(string, "The directory \"") ||
-            /* kbd module that is trying to get loaded */
-            strstr(string, "couldn't open module kbd") ||
-            /* we're not interested in input drivers */
-            strstr(string, "No input driver matching")) {
+        /* nouveau: warning about no outputs being found connected */
+        strstr(string, "trying again") ||
+        /* nouveau: warning for set resolution with no screen attached */
+        strstr(string, "initial framebuffer") ||
+        /* X: no keyboard/mouse warning */
+        strstr(string, "looking for one") ||
+        /* nvidia: cannot read EDID warning */
+        strstr(string, "EDID") ||
+        /* fonts directory that cannot be found */
+        strstr(string, "The directory \"") ||
+        /* kbd module that is trying to get loaded */
+        strstr(string, "couldn't open module kbd") ||
+        /* we're not interested in input drivers */
+        strstr(string, "No input driver matching")) {
       prio = LOG_DEBUG;
     } else if (strstr(string, "valid display devices are")) {
       /* Recognize nvidia complaining about ConnectedMonitor setting */
@@ -196,8 +196,8 @@ static void parse_xorg_output(char * string){
         }
         set_bb_error(0); /* Clear error message, we want to override it even though it is not first */
         snprintf(error_buffer, sizeof error_buffer, "You need to change the"
-                " ConnectedMonitor setting in %s to %s",
-                bb_config.x_conf_file, valid);
+            " ConnectedMonitor setting in %s to %s",
+            bb_config.x_conf_file, valid);
         set_bb_error(error_buffer);//set as error
         /* Restore the string for logging purposes */
         valid_end[0] = last_chr;
