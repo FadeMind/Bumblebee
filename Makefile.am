@@ -3,6 +3,8 @@
 GITVERSION = $(shell "$(top_srcdir)/version.sh" "$(top_srcdir)")
 relnotes = doc/RELEASE_NOTES_3_2_1
 
+DISTCHECK_CONFIGURE_FLAGS = --with-udev-rules=$$dc_install_base/lib/udev/rules.d
+
 bumblebeedconfdir=$(sysconfdir)/bumblebee
 
 AM_CPPFLAGS = ${regular_CPPFLAGS} \
@@ -23,8 +25,7 @@ endif
 bin_SCRIPTS = scripts/bumblebee-bugreport
 
 xconfddir = $(bumblebeedconfdir)/xorg.conf.d
-xconfd_DATA = conf/xorg.conf.d/10-dummy.conf \
-	conf/xorg.conf.d/10-ignore-devices.conf
+xconfd_DATA = conf/xorg.conf.d/10-dummy.conf
 
 CLEANFILES = $(noinst_SCRIPTS) conf/bumblebee.conf $(bin_SCRIPTS)
 EXTRA_DIST = scripts/systemd/bumblebeed.service.in \
@@ -35,12 +36,20 @@ EXTRA_DIST = scripts/systemd/bumblebeed.service.in \
 	conf/xorg.conf.nouveau \
 	$(xconfd_DATA) \
 	README.markdown \
-	scripts/bash_completion/bumblebee \
+	scripts/bash_completion/optirun \
 	scripts/bumblebee-bugreport.in \
 	$(relnotes) \
-	version.sh
-# for laziness include all headers found
-EXTRA_DIST += src/*.h src/*/switching.h
+	version.sh \
+	src/bbconfig.h \
+	src/bblogger.h \
+	src/bbrun.h \
+	src/bbsecondary.h \
+	src/bbsocketclient.h \
+	src/bbsocket.h \
+	src/driver.h \
+	src/module.h \
+	src/pci.h \
+	src/switch/switching.h
 
 if WITH_PIDFILE
 EXTRA_DIST += scripts/sysvinit/bumblebeed.in
@@ -62,7 +71,7 @@ dist_doc_DATA = $(relnotes) README.markdown
 bumblebeedconf_DATA = conf/bumblebee.conf conf/xorg.conf.nouveau conf/xorg.conf.nvidia
 
 completiondir = $(sysconfdir)/bash_completion.d
-completion_DATA = scripts/bash_completion/bumblebee
+completion_DATA = scripts/bash_completion/optirun
 
 if WITH_UDEV_RULES
 udevrulesdir = $(UDEV_RULES_DIR)
